@@ -1,15 +1,18 @@
 Summary:	A log viewer for the systemd journal
+Summary(pl.UTF-8):	Przeglądarka logów z kroniki systemd
 Name:		gnome-logs
-Version:	3.16.2
+Version:	3.18.1
 Release:	1
 License:	GPL v3
 Group:		X11/Applications
-Source0:	https://download.gnome.org/sources/gnome-logs/3.16/%{name}-%{version}.tar.xz
-# Source0-md5:	8da362feb647c715ccffa92236117867
+Source0:	https://download.gnome.org/sources/gnome-logs/3.18/%{name}-%{version}.tar.xz
+# Source0-md5:	3ae933e0d2c019cf674b31de30812df1
 URL:		https://wiki.gnome.org/Apps/Logs
-BuildRequires:	appdata-tools
-BuildRequires:	autoconf
+BuildRequires:	appstream-glib-devel
+BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake >= 1:1.11
+BuildRequires:	docbook-dtd43-xml
+BuildRequires:	docbook-style-xsl
 BuildRequires:	glib2-devel >= 1:2.44.0
 BuildRequires:	gnome-common
 BuildRequires:	gsettings-desktop-schemas-devel
@@ -32,6 +35,9 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 GNOME Logs is a viewer for the systemd journal.
+
+%description -l pl.UTF-8
+GNOME Logs to przeglądarka kroniki systemd.
 
 %prep
 %setup -q
@@ -75,5 +81,5 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/glib-2.0/schemas/org.gnome.Logs.gschema.xml
 %{_desktopdir}/org.gnome.Logs.desktop
 %{_mandir}/man1/gnome-logs.1*
-%{_iconsdir}/hicolor/*/*/*.png
-%{_iconsdir}/hicolor/*/*/*.svg
+%{_iconsdir}/hicolor/*x*/apps/gnome-logs.png
+%{_iconsdir}/hicolor/symbolic/apps/gnome-logs-symbolic.svg
