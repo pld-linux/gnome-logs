@@ -1,12 +1,12 @@
 Summary:	A log viewer for the systemd journal
 Summary(pl.UTF-8):	Przeglądarka logów z kroniki systemd
 Name:		gnome-logs
-Version:	3.18.1
+Version:	3.24.1
 Release:	1
 License:	GPL v3
 Group:		X11/Applications
-Source0:	https://download.gnome.org/sources/gnome-logs/3.18/%{name}-%{version}.tar.xz
-# Source0-md5:	3ae933e0d2c019cf674b31de30812df1
+Source0:	https://download.gnome.org/sources/gnome-logs/3.24/%{name}-%{version}.tar.xz
+# Source0-md5:	c0249380300e64ca8de2329e20007b76
 URL:		https://wiki.gnome.org/Apps/Logs
 BuildRequires:	appstream-glib-devel
 BuildRequires:	autoconf >= 2.50
@@ -16,7 +16,7 @@ BuildRequires:	docbook-style-xsl
 BuildRequires:	glib2-devel >= 1:2.44.0
 BuildRequires:	gnome-common
 BuildRequires:	gsettings-desktop-schemas-devel
-BuildRequires:	gtk+3-devel >= 3.16.0
+BuildRequires:	gtk+3-devel >= 3.20.0
 BuildRequires:	intltool >= 0.50.0
 BuildRequires:	libxslt-progs
 BuildRequires:	pkgconfig >= 1:0.24
@@ -25,11 +25,11 @@ BuildRequires:	systemd-devel
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
 BuildRequires:	yelp-tools
-Requires(post,postun):	glib2 >= 1:2.36.0
+Requires(post,postun):	glib2 >= 1:2.44.0
 Requires(post,postun):	gtk-update-icon-cache
 Requires:	glib2 >= 1:2.44.0
 Requires:	gsettings-desktop-schemas
-Requires:	gtk+3 >= 3.16.0
+Requires:	gtk+3 >= 3.20.0
 Requires:	hicolor-icon-theme
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
