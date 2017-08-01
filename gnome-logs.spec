@@ -1,12 +1,12 @@
 Summary:	A log viewer for the systemd journal
 Summary(pl.UTF-8):	Przeglądarka logów z kroniki systemd
 Name:		gnome-logs
-Version:	3.24.1
+Version:	3.24.2
 Release:	1
 License:	GPL v3
 Group:		X11/Applications
 Source0:	https://download.gnome.org/sources/gnome-logs/3.24/%{name}-%{version}.tar.xz
-# Source0-md5:	c0249380300e64ca8de2329e20007b76
+# Source0-md5:	6dc913951edd0ec8a278501608ca2d4b
 URL:		https://wiki.gnome.org/Apps/Logs
 BuildRequires:	appstream-glib-devel
 BuildRequires:	autoconf >= 2.50
