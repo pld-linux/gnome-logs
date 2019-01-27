@@ -1,12 +1,12 @@
 Summary:	A log viewer for the systemd journal
 Summary(pl.UTF-8):	Przeglądarka logów z kroniki systemd
 Name:		gnome-logs
-Version:	3.24.2
+Version:	3.30.0
 Release:	1
 License:	GPL v3
 Group:		X11/Applications
-Source0:	https://download.gnome.org/sources/gnome-logs/3.24/%{name}-%{version}.tar.xz
-# Source0-md5:	6dc913951edd0ec8a278501608ca2d4b
+Source0:	https://download.gnome.org/sources/gnome-logs/3.30/%{name}-%{version}.tar.xz
+# Source0-md5:	5441ae894bd21f8f9ae9c1d86c8ce564
 URL:		https://wiki.gnome.org/Apps/Logs
 BuildRequires:	appstream-glib-devel
 BuildRequires:	autoconf >= 2.50
@@ -43,7 +43,6 @@ GNOME Logs to przeglądarka kroniki systemd.
 %setup -q
 
 %build
-%{__intltoolize}
 %{__aclocal} -I m4
 %{__autoconf}
 %{__autoheader}
@@ -75,7 +74,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc AUTHORS ChangeLog NEWS README
 %attr(755,root,root) %{_bindir}/gnome-logs
-%{_datadir}/appdata/org.gnome.Logs.appdata.xml
+%{_datadir}/metainfo/org.gnome.Logs.appdata.xml
 %{_datadir}/dbus-1/services/org.gnome.Logs.service
 %{_datadir}/glib-2.0/schemas/org.gnome.Logs.enums.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.Logs.gschema.xml
