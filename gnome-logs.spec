@@ -1,26 +1,24 @@
 Summary:	A log viewer for the systemd journal
 Summary(pl.UTF-8):	Przeglądarka logów z kroniki systemd
 Name:		gnome-logs
-Version:	3.30.0
+Version:	3.34.0
 Release:	1
 License:	GPL v3
 Group:		X11/Applications
-Source0:	https://download.gnome.org/sources/gnome-logs/3.30/%{name}-%{version}.tar.xz
-# Source0-md5:	5441ae894bd21f8f9ae9c1d86c8ce564
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-logs/3.34/%{name}-%{version}.tar.xz
+# Source0-md5:	3a51b7d67cef66f27128e4aef4b917db
 URL:		https://wiki.gnome.org/Apps/Logs
-BuildRequires:	appstream-glib-devel
-BuildRequires:	autoconf >= 2.50
-BuildRequires:	automake >= 1:1.11
 BuildRequires:	docbook-dtd43-xml
 BuildRequires:	docbook-style-xsl
+BuildRequires:	gettext-tools
 BuildRequires:	glib2-devel >= 1:2.44.0
-BuildRequires:	gnome-common
 BuildRequires:	gsettings-desktop-schemas-devel
-BuildRequires:	gtk+3-devel >= 3.20.0
-BuildRequires:	intltool >= 0.50.0
+BuildRequires:	gtk+3-devel >= 3.22.0
 BuildRequires:	libxslt-progs
+BuildRequires:	meson
+BuildRequires:	ninja >= 1.5
 BuildRequires:	pkgconfig >= 1:0.24
-BuildRequires:	rpmbuild(macros) >= 1.311
+BuildRequires:	rpmbuild(macros) >= 1.736
 BuildRequires:	systemd-devel
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
@@ -29,7 +27,7 @@ Requires(post,postun):	glib2 >= 1:2.44.0
 Requires(post,postun):	gtk-update-icon-cache
 Requires:	glib2 >= 1:2.44.0
 Requires:	gsettings-desktop-schemas
-Requires:	gtk+3 >= 3.20.0
+Requires:	gtk+3 >= 3.22.0
 Requires:	hicolor-icon-theme
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -43,19 +41,15 @@ GNOME Logs to przeglądarka kroniki systemd.
 %setup -q
 
 %build
-%{__aclocal} -I m4
-%{__autoconf}
-%{__autoheader}
-%{__automake}
-%configure \
-	--disable-silent-rules
-%{__make}
+%meson build \
+	-Dman=true
+
+%ninja_build -C build
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%{__make} install \
-	DESTDIR=$RPM_BUILD_ROOT
+%ninja_install -C build
 
 %find_lang %{name} --with-gnome
 
@@ -72,13 +66,14 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%doc AUTHORS ChangeLog NEWS README
+%doc AUTHORS NEWS README
 %attr(755,root,root) %{_bindir}/gnome-logs
-%{_datadir}/metainfo/org.gnome.Logs.appdata.xml
 %{_datadir}/dbus-1/services/org.gnome.Logs.service
 %{_datadir}/glib-2.0/schemas/org.gnome.Logs.enums.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.Logs.gschema.xml
+%{_datadir}/gnome-logs
+%{_datadir}/metainfo/org.gnome.Logs.appdata.xml
 %{_desktopdir}/org.gnome.Logs.desktop
+%{_iconsdir}/hicolor/scalable/apps/org.gnome.Logs.svg
+%{_iconsdir}/hicolor/symbolic/apps/org.gnome.Logs-symbolic.svg
 %{_mandir}/man1/gnome-logs.1*
-%{_iconsdir}/hicolor/*x*/apps/gnome-logs.png
-%{_iconsdir}/hicolor/symbolic/apps/gnome-logs-symbolic.svg
