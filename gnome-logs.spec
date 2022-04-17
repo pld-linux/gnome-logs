@@ -1,25 +1,26 @@
 Summary:	A log viewer for the systemd journal
 Summary(pl.UTF-8):	Przeglądarka logów z kroniki systemd
 Name:		gnome-logs
-Version:	3.36.0
+Version:	42.0
 Release:	1
 License:	GPL v3
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-logs/3.36/%{name}-%{version}.tar.xz
-# Source0-md5:	fc25928b4ffad25e27b3755751b4b323
+Source0:	https://download.gnome.org/sources/gnome-logs/42/%{name}-%{version}.tar.xz
+# Source0-md5:	d95de7278d7a4668d79a2ebd67896966
 URL:		https://wiki.gnome.org/Apps/Logs
 BuildRequires:	docbook-dtd43-xml
-BuildRequires:	docbook-style-xsl
+BuildRequires:	docbook-style-xsl-nons
 BuildRequires:	gettext-tools
 BuildRequires:	glib2-devel >= 1:2.44.0
 BuildRequires:	gsettings-desktop-schemas-devel
 BuildRequires:	gtk+3-devel >= 3.22.0
+BuildRequires:	libhandy1-devel >= 1.5.0
 BuildRequires:	libxslt-progs
 BuildRequires:	meson
 BuildRequires:	ninja >= 1.5
 BuildRequires:	pkgconfig >= 1:0.24
 BuildRequires:	rpmbuild(macros) >= 1.736
-BuildRequires:	systemd-devel
+BuildRequires:	systemd-devel >= 1:209
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
 BuildRequires:	yelp-tools
@@ -29,6 +30,7 @@ Requires:	glib2 >= 1:2.44.0
 Requires:	gsettings-desktop-schemas
 Requires:	gtk+3 >= 3.22.0
 Requires:	hicolor-icon-theme
+Requires:	libhandy1 >= 1.5.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
