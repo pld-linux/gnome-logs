@@ -1,20 +1,21 @@
+# TODO: switch to gtk4-update-icon-cache
 Summary:	A log viewer for the systemd journal
 Summary(pl.UTF-8):	Przeglądarka logów z kroniki systemd
 Name:		gnome-logs
-Version:	42.0
+Version:	43.0
 Release:	1
 License:	GPL v3
 Group:		X11/Applications
-Source0:	https://download.gnome.org/sources/gnome-logs/42/%{name}-%{version}.tar.xz
-# Source0-md5:	d95de7278d7a4668d79a2ebd67896966
+Source0:	https://download.gnome.org/sources/gnome-logs/43/%{name}-%{version}.tar.xz
+# Source0-md5:	fbeada138a28d7ba13a4a95d585ee4c0
 URL:		https://wiki.gnome.org/Apps/Logs
 BuildRequires:	docbook-dtd43-xml
 BuildRequires:	docbook-style-xsl-nons
 BuildRequires:	gettext-tools
 BuildRequires:	glib2-devel >= 1:2.44.0
 BuildRequires:	gsettings-desktop-schemas-devel
-BuildRequires:	gtk+3-devel >= 3.22.0
-BuildRequires:	libhandy1-devel >= 1.5.0
+BuildRequires:	gtk4-devel >= 4.6.0
+BuildRequires:	libadwaita-devel >= 1.2
 BuildRequires:	libxslt-progs
 BuildRequires:	meson
 BuildRequires:	ninja >= 1.5
@@ -28,9 +29,9 @@ Requires(post,postun):	glib2 >= 1:2.44.0
 Requires(post,postun):	gtk-update-icon-cache
 Requires:	glib2 >= 1:2.44.0
 Requires:	gsettings-desktop-schemas
-Requires:	gtk+3 >= 3.22.0
+Requires:	gtk4 >= 4.6.0
 Requires:	hicolor-icon-theme
-Requires:	libhandy1 >= 1.5.0
+Requires:	libadwaita >= 1.2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
