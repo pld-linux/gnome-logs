@@ -2,25 +2,25 @@
 Summary:	A log viewer for the systemd journal
 Summary(pl.UTF-8):	Przeglądarka logów z kroniki systemd
 Name:		gnome-logs
-Version:	43.0
+Version:	45.0
 Release:	1
 License:	GPL v3
 Group:		X11/Applications
-Source0:	https://download.gnome.org/sources/gnome-logs/43/%{name}-%{version}.tar.xz
-# Source0-md5:	fbeada138a28d7ba13a4a95d585ee4c0
-URL:		https://wiki.gnome.org/Apps/Logs
+Source0:	https://download.gnome.org/sources/gnome-logs/45/%{name}-%{version}.tar.xz
+# Source0-md5:	5b9396cf24528ae72eb4c48934f60df2
+URL:		https://apps.gnome.org/Logs/
 BuildRequires:	docbook-dtd43-xml
 BuildRequires:	docbook-style-xsl-nons
 BuildRequires:	gettext-tools
 BuildRequires:	glib2-devel >= 1:2.44.0
 BuildRequires:	gsettings-desktop-schemas-devel
-BuildRequires:	gtk4-devel >= 4.6.0
-BuildRequires:	libadwaita-devel >= 1.2
+BuildRequires:	gtk4-devel >= 4.10.0
+BuildRequires:	libadwaita-devel >= 1.4
 BuildRequires:	libxslt-progs
-BuildRequires:	meson
+BuildRequires:	meson >= 0.59.0
 BuildRequires:	ninja >= 1.5
 BuildRequires:	pkgconfig >= 1:0.24
-BuildRequires:	rpmbuild(macros) >= 1.736
+BuildRequires:	rpmbuild(macros) >= 2.042
 BuildRequires:	systemd-devel >= 1:209
 BuildRequires:	tar >= 1:1.22
 BuildRequires:	xz
@@ -29,9 +29,9 @@ Requires(post,postun):	glib2 >= 1:2.44.0
 Requires(post,postun):	gtk-update-icon-cache
 Requires:	glib2 >= 1:2.44.0
 Requires:	gsettings-desktop-schemas
-Requires:	gtk4 >= 4.6.0
+Requires:	gtk4 >= 4.10.0
 Requires:	hicolor-icon-theme
-Requires:	libadwaita >= 1.2
+Requires:	libadwaita >= 1.4
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -44,15 +44,15 @@ GNOME Logs to przeglądarka kroniki systemd.
 %setup -q
 
 %build
-%meson build \
+%meson \
 	-Dman=true
 
-%ninja_build -C build
+%meson_build
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%ninja_install -C build
+%meson_install
 
 %find_lang %{name} --with-gnome
 
@@ -74,7 +74,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/dbus-1/services/org.gnome.Logs.service
 %{_datadir}/glib-2.0/schemas/org.gnome.Logs.enums.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.Logs.gschema.xml
-%{_datadir}/gnome-logs
 %{_datadir}/metainfo/org.gnome.Logs.appdata.xml
 %{_desktopdir}/org.gnome.Logs.desktop
 %{_iconsdir}/hicolor/scalable/apps/org.gnome.Logs.svg
